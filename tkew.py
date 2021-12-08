@@ -29,3 +29,7 @@ class TaskQueue:
         self.__signal = True
         for worker in self.__workers:
             worker.join()
+
+    def queue(self, fn, *args, **kwargs):
+        wid = self.__poll()
+        self.__jobs[wid] = (fn, args, kwargs)
