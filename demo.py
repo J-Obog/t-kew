@@ -1,15 +1,23 @@
 from tkew import TaskQueue
 import time
+import random 
 
 def expensive_task(timeout):
     time.sleep(timeout)
+
 
 def main():
     s = time.perf_counter()
     tq = TaskQueue(1)
     tq.start() 
 
-    tq.queue(expensive_task, 3)
+    num_taks = 10
+    min_timeout = 1
+    max_timeout = 15
+
+    for _ in range(num_taks): 
+        timeout = random.randint(min_timeout, max_timeout)
+        tq.queue(expensive_task, timeout)
 
     tq.stop()
     e = time.perf_counter()
