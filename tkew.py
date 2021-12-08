@@ -9,3 +9,11 @@ class TaskQueue:
         self.__workers: List[Thread] = [Thread(target=None, args=(wid,) ) for wid in range(num_workers)]
         self.__flags: List[Optional[Tuple]] = [None] * num_workers
         self.__signal: bool = True
+
+    def __poll(self) -> int:
+        i = 0
+        n = len(self.__workers)
+        while self.__workers[i % n] != None:
+            pass
+
+        return i % n
