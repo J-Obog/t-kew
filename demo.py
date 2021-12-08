@@ -9,20 +9,16 @@ def expensive_task(timeout):
 
 def main():
     s = time.perf_counter()
-    tq = TaskQueue(5)
+    tq = TaskQueue(4)
     tq.start() 
 
-    num_taks = 10
+    num_tasks = 10
     min_timeout = 1
     max_timeout = 15
-    sm = 0
 
-    for _ in range(num_taks): 
+    for _ in range(num_tasks): 
         timeout = random.randint(min_timeout, max_timeout)
-        sm += timeout
         tq.queue(expensive_task, timeout)
-
-    print(sm)
 
     tq.stop()
     e = time.perf_counter()

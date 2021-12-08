@@ -41,7 +41,7 @@ class TaskQueue:
             worker.start()
 
     def stop(self):
-        while any(self.__jobs):
+        while (any(self.__jobs)) or (len(self.__q) != 0):
             pass
         
         self.__signal = True
