@@ -22,9 +22,8 @@ class TaskQueue:
     def __poll(self) -> int:
         i = 0
         n = len(self.__workers)
-        while self.__workers[i % n] != None:
-            pass
-
+        while self.__jobs[i % n] != None:
+            i += 1
         return i % n
 
     def start(self):
