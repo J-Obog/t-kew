@@ -27,7 +27,7 @@ class TaskQueue:
             i += 1
         return i % n
 
-    def __delegate(self, *args, **kwargs):
+    def __delegate(self):
         while not self.__signal:
             if len(self.__q) != 0:
                 wid = self.__poll()
