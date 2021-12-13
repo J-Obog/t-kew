@@ -12,8 +12,7 @@ class TaskQueue:
         self.__jobs: List[Optional[Tuple]] = [None] * num_workers
         self.__signal: bool = False
     
-    def __listen(self, *args, **kwargs):
-        wid = args[0]
+    def __listen(self, wid):
         while not self.__signal:
             job = self.__jobs[wid] 
             if job != None:

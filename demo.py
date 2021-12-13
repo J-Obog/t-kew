@@ -12,7 +12,7 @@ def main():
     tq = TaskQueue(4)
     tq.start() 
 
-    num_tasks = 10
+    num_tasks = 2
     min_timeout = 1
     max_timeout = 15
 
